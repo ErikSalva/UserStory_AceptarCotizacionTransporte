@@ -36,7 +36,7 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
             disabled={isDisabled}
             className="mr-2"
           />
-          <label htmlFor="debito-credito" className="text-gray-700">Débito/Crédito</label>
+          <label htmlFor="debito-credito" className="text-white">Débito/Crédito</label>
         </div>
         <div className="flex items-center">
           <input
@@ -48,13 +48,13 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
             disabled={isDisabled}
             className="mr-2"
           />
-          <label htmlFor="efectivo" className="text-gray-700">Efectivo</label>
+          <label htmlFor="efectivo" className="text-white">Efectivo</label>
         </div>
         {paymentMethodError && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg">
           {paymentMethodError}
         </p>}
         {!isDisabled && (
-          <div className="flex space-x-2 mt-4 pt-5 justify-center">
+          <div className="flex space-x-2 mt-4 justify-center">
             <button
               type="button"
               className="bg-[#FF6F61] text-white px-4 py-2 rounded-lg hover:bg-[#FF4F3F] transition-colors duration-300"

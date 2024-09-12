@@ -10,7 +10,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
         setLoading(true);
         setTimeout(() => {
             navigate("/cotizacion", { state: { nroPedido, nombre: nombreChofer, fechaRetiro, fechaEntrega, precio } });
-        }, 1000); // Delay de 1 segundo para simular el proceso de carga
+        }, 300); // Delay de 1 segundo para simular el proceso de carga
     };
 
     // Generar las estrellas dinámicamente
