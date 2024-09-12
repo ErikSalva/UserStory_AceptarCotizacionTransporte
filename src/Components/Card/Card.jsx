@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css'; // Importa el archivo de estilos
+import { useConfirmation } from '../../context/contextConfirmation';
 
 const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { confirmation } = useConfirmation();
 
     const handleOnClick = () => {
+
+        if (confirmation) {
+            alert('Ya se acepto una cotización.');
+            return;
+        }
+
         setLoading(true);
         setTimeout(() => {
             navigate("/cotizacion", { state: { nroPedido, nombre: nombreChofer, fechaRetiro, fechaEntrega, precio } });
@@ -76,6 +84,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         CONTRATAR
                     </button>
                 </div>
+                <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2 text-center">Ya se acepto una cotización.</p>
             </div>
             {loading && (
                 <div className="loading-overlay">
