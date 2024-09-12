@@ -84,7 +84,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         CONTRATAR
                     </button>
                 </div>
-                <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2 text-center">Ya se acepto una cotización.</p>
+                {confirmation && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2 text-center">Ya se acepto una cotización.</p>}
             </div>
             {loading && (
                 <div className="loading-overlay">
