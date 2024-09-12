@@ -38,6 +38,11 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
             className="mr-2"
           />
           <label htmlFor="debito-credito" className="text-gray-700">Débito/Crédito</label>
+          <img
+            src="/img/tarjeta-de-credito.png"
+            alt="tarjeta"
+            className="h-5 w-5 mr-2 mx-2" // Ajusta el tamaño del ícono con Tailwind
+          />
         </div>
         <div className="flex items-center">
           <input
@@ -50,6 +55,11 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
             className="mr-2"
           />
           <label htmlFor="efectivo" className="text-gray-700">Efectivo</label>
+          <img
+            src="/img/dinero.png"
+            alt="Dinero"
+            className="h-5 w-5 mr-2 mx-2" // Ajusta el tamaño del ícono con Tailwind
+          />
         </div>
         {paymentMethodError && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg">
           {paymentMethodError}

@@ -5,7 +5,7 @@ import './Confirmation.css'; // Asegúrate de importar el archivo CSS
 const Confirmation = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas } = location.state || {};
+    const { nombreChofer, fechaEntrega, precio, tarjeta } = location.state || {};
 
     useEffect(() => {
         const audio = new Audio('/sounds/bell-ding.wav');
@@ -14,7 +14,7 @@ const Confirmation = () => {
     }, []);
 
     const handleNavigate = () => {
-        navigate('/'); 
+        navigate('/');
     };
 
     return (
@@ -48,16 +48,25 @@ const Confirmation = () => {
                 <div className="text-sm text-gray-700 mb-4">
                     <p><strong>Detalle del pago</strong></p>
                     <p>Total: <strong>${precio}</strong></p>
-                    <p>
+                    {tarjeta ? <p>
                         <span className="flex items-center">
-                            <img 
-                                src="/img/dinero.png" 
+                            <img
+                                src="/img/tarjeta-de-credito.png"
+                                alt="tarjeta"
+                                className="h-5 w-5 mr-2" // Ajusta el tamaño del ícono con Tailwind
+                            />
+                            Tarjeta
+                        </span>
+                    </p> : <p>
+                        <span className="flex items-center">
+                            <img
+                                src="/img/dinero.png"
                                 alt="Dinero"
                                 className="h-5 w-5 mr-2" // Ajusta el tamaño del ícono con Tailwind
-                            /> 
+                            />
                             Efectivo
                         </span>
-                    </p>
+                    </p>}
                 </div>
                 <button
                     onClick={handleNavigate}

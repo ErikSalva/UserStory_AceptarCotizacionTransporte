@@ -18,12 +18,13 @@ const Detalle = () => {
         fechaRetiro,
         fechaEntrega,
         precio: total,
+        tarjeta,
       }
     });
   };
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-lg font-semibold mb-4">Pedido {pedido} - Detalle</h2>
+      <h2 className="text-lg font-semibold mb-4">Cotización {pedido} - Detalle</h2>
       <div className="space-y-4">
         {/* Detalle de envío */}
         <div>
