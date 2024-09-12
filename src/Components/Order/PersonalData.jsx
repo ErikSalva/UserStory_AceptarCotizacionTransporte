@@ -95,19 +95,22 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
       errors.nroTarjeta = 'El número de tarjeta debe tener 16 dígitos.';
     }
 
-    // Validar fecha de vencimiento (formato DD/MM)
+    // Validar fecha de vencimiento (formato MM/AA)
     if (!data.vencimiento) {
-      errors.vencimiento = 'La fecha de vencimiento es requerida';
+      errors.vencimiento = 'La fecha de vencimiento es requerida.';
     } else if (!/^\d{2}\/\d{2}$/.test(data.vencimiento)) {
-      errors.vencimiento = 'La fecha de vencimiento debe estar en formato DD/MM';
+      errors.vencimiento = 'La fecha de vencimiento debe estar en formato MM/AA.';
     } else {
-      // Verifica que la fecha de vencimiento sea una fecha válida
-      const [day, month] = data.vencimiento.split('/').map(Number);
+      // Verifica que la fecha de vencimiento sea válida y no esté vencida
+      const [month, year] = data.vencimiento.split('/').map(Number);
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth() + 1; // Los meses son de 0 a 11, por eso sumamos 1
+      const currentYear = currentDate.getFullYear() % 100; // Tomar solo los últimos 2 dígitos del año
+
       if (month < 1 || month > 12) {
         errors.vencimiento = 'El mes de la fecha de vencimiento debe estar entre 01 y 12.';
-      }
-      if (day < 1 || day > 31) {
-        errors.vencimiento = 'El día de la fecha de vencimiento debe estar entre 01 y 31.';
+      } else if (year < currentYear || (year === currentYear && month < currentMonth)) {
+        errors.vencimiento = 'La tarjeta está vencida.';
       }
     }
     // Validar código de seguridad (3 dígitos)
