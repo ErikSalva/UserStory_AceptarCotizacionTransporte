@@ -29,7 +29,9 @@ const Detalle = () => {
   };
 
   return (
-    <div className="bg-[#0077B6] p-6 rounded-xl shadow-md max-w-md mx-auto mt-8">
+
+    <div className='p-5 mt-8'>
+      <div className="bg-[#0077B6] p-6 rounded-xl shadow-md max-w-md mx-auto ">
       <h2 className="text-lg font-semibold mb-4 text-white">Pedido {pedido} - Detalle</h2>
       <div className="space-y-4">
         {/* Detalle de envío */}
@@ -71,10 +73,24 @@ const Detalle = () => {
           <p className="text-sm text-gray-200">
             <span className="font-semibold">Total:</span> ${total}
           </p>
-          {tarjeta ? <p className="text-sm text-gray-200">
-            <span className="font-semibold">Tarjeta terminada en:</span> {tarjeta.slice(-4)}
-          </p> : <p className="text-sm text-gray-200">
-            <span className="font-semibold">Efectivo</span>
+          {tarjeta ? <p className="text-gray-200">
+            <span className="flex items-center">
+                <img
+                    src="/img/tarjeta-de-credito.png"
+                    alt="tarjeta"
+                    className="h-5 w-5 mr-2" // Ajusta el tamaño del ícono con Tailwind
+                />
+                Tarjeta
+            </span>
+            </p> : <p className="text-gray-200">
+                <span className="flex items-center">
+                    <img
+                        src="/img/dinero.png"
+                        alt="Dinero"
+                        className="h-5 w-5 mr-2" // Ajusta el tamaño del ícono con Tailwind
+                    />
+                    Efectivo
+                </span>
           </p>}
         </div>
 
@@ -100,6 +116,11 @@ const Detalle = () => {
         </div>
       )}
     </div>
+
+
+
+    </div>
+    
   );
 }
 
