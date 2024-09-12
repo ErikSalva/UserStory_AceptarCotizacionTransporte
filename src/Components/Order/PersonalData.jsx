@@ -27,7 +27,7 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
     });
   };
 
-  const formatCodSeg = (value) => value.slice(0, 4);
+  const formatCodSeg = (value) => value.slice(0, 3);
 
   const handleCodSeg = (e) => {
     const formattedValue = formatCodSeg(e.target.value);
@@ -110,11 +110,11 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
         errors.vencimiento = 'El día de la fecha de vencimiento debe estar entre 01 y 31.';
       }
     }
-    // Validar código de seguridad (3 o 4 dígitos)
+    // Validar código de seguridad (3 dígitos)
     if (!data.codSeg) {
       errors.codSeg = 'El código de seguridad es requerido';
     } else if (!/^\d{3}$/.test(data.codSeg)) {
-      errors.codSeg = 'El código de seguridad debe tener 3 o 4 dígitos';
+      errors.codSeg = 'El código de seguridad debe tener 3 dígitos';
     }
 
     return errors;
