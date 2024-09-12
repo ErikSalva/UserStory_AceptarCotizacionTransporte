@@ -11,7 +11,15 @@ const Detalle = () => {
   };
 
   const handleConfirm = () => {
-    alert('Pedido confirmado');
+    navigate('/confirmacion', {
+      state: {
+        nroPedido: pedido,
+        nombreChofer: nombre,
+        fechaRetiro,
+        fechaEntrega,
+        precio: total,
+      }
+    });
   };
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
