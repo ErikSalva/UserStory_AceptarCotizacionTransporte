@@ -31,7 +31,7 @@ const Order = () => {
   }
 
   return (
-    <div className='p-4 max-w-md mx-auto'>
+    <div className='p-5 max-w-md mx-auto'>
       <h2 className='text-2xl font-bold text-gray-800 text-center'>Cotización #{nroPedido}</h2>
       <PaymentMethods setPaymentMethod={setPaymentMethod} isDisabled={isDisabled} setIsDisabled={setIsDisabled} handleCancel={handleCancel} dataPedido={dataPedido} />
 
