@@ -22,9 +22,10 @@ const Detalle = () => {
           fechaRetiro,
           fechaEntrega,
           precio: total,
+          tarjeta,
         }
       });
-    }, 2000); // Delay de 1 segundo para simular el proceso de carga
+    }, 750); // Delay de 0,75 segundo para simular el proceso de carga
   };
 
   return (
@@ -70,9 +71,11 @@ const Detalle = () => {
           <p className="text-sm text-gray-200">
             <span className="font-semibold">Total:</span> ${total}
           </p>
-          <p className="text-sm text-gray-200">
+          {tarjeta ? <p className="text-sm text-gray-200">
             <span className="font-semibold">Tarjeta terminada en:</span> {tarjeta.slice(-4)}
-          </p>
+          </p> : <p className="text-sm text-gray-200">
+            <span className="font-semibold">Efectivo</span>
+          </p>}
         </div>
 
         {/* Botones de Confirmar y Cancelar */}
