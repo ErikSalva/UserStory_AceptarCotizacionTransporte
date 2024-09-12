@@ -50,7 +50,6 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
     });
   };
 
-
   const handleBack = () => {
     setIsDisabled(false);
   }
@@ -95,26 +94,27 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
       errors.nroTarjeta = 'El número de tarjeta debe tener 16 dígitos.';
     }
 
-    // Validar fecha de vencimiento (formato DD/MM)
+    // Validar fecha de vencimiento (formato MM/AA)
     if (!data.vencimiento) {
-      errors.vencimiento = 'La fecha de vencimiento es requerida';
+      errors.vencimiento = 'La fecha de vencimiento es requerida.';
     } else if (!/^\d{2}\/\d{2}$/.test(data.vencimiento)) {
-      errors.vencimiento = 'La fecha de vencimiento debe estar en formato DD/MM';
+      errors.vencimiento = 'La fecha de vencimiento debe estar en formato MM/AA.';
     } else {
       // Verifica que la fecha de vencimiento sea una fecha válida
-      const [day, month] = data.vencimiento.split('/').map(Number);
+      const [month, year] = data.vencimiento.split('/').map(Number);
       if (month < 1 || month > 12) {
         errors.vencimiento = 'El mes de la fecha de vencimiento debe estar entre 01 y 12.';
       }
-      if (day < 1 || day > 31) {
-        errors.vencimiento = 'El día de la fecha de vencimiento debe estar entre 01 y 31.';
+      if (year < 0 || year > 99) {
+        errors.vencimiento = 'El año de la fecha de vencimiento debe estar en un rango válido.';
       }
     }
+
     // Validar código de seguridad (3 dígitos)
     if (!data.codSeg) {
-      errors.codSeg = 'El código de seguridad es requerido';
+      errors.codSeg = 'El código de seguridad es requerido.';
     } else if (!/^\d{3}$/.test(data.codSeg)) {
-      errors.codSeg = 'El código de seguridad debe tener 3 dígitos';
+      errors.codSeg = 'El código de seguridad debe tener 3 dígitos.';
     }
 
     return errors;
@@ -132,7 +132,9 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             placeholder="Titular"
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
-          {errors.titular && <p className="text-red-500">{errors.titular}</p>}
+          {errors.titular && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.titular}
+          </p>}
         </div>
 
         <div>
@@ -147,7 +149,9 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             <option value="Pasaporte">Pasaporte</option>
             <option value="Cédula">Cédula de identidad</option>
           </select>
-          {errors.tipoDoc && <p className="text-red-500">{errors.tipoDoc}</p>}
+          {errors.tipoDoc && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.tipoDoc}
+          </p>}
         </div>
 
         <div>
@@ -159,7 +163,9 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             type='number'
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
-          {errors.nroDoc && <p className="text-red-500">{errors.nroDoc}</p>}
+          {errors.nroDoc && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.nroDoc}
+          </p>}
         </div>
 
         <div>
@@ -171,7 +177,9 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             placeholder="Nro de tarjeta"
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
-          {errors.nroTarjeta && <p className="text-red-500">{errors.nroTarjeta}</p>}
+          {errors.nroTarjeta && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.nroTarjeta}
+          </p>}
         </div>
 
         <div>
@@ -179,10 +187,12 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             name="vencimiento"
             value={data.vencimiento}
             onChange={handleExpiryDateChange}
-            placeholder="Fecha de expiración (DD/MM)"
+            placeholder="Fecha de expiración (MM/AA)"
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
-          {errors.vencimiento && <p className="text-red-500">{errors.vencimiento}</p>}
+          {errors.vencimiento && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.vencimiento}
+          </p>}
         </div>
 
         <div>
@@ -194,31 +204,29 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             placeholder="Código de seguridad"
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
-          {errors.codSeg && <p className="text-red-500">{errors.codSeg}</p>}
+          {errors.codSeg && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
+            {errors.codSeg}
+          </p>}
         </div>
 
         <div className="flex space-x-2 mt-4 justify-center">
           <button
             type="button"
             className="bg-[#4CAF50] text-white px-4 py-2 rounded-lg hover:bg-[#45a049] transition-colors duration-300"
-            onClick={handleBack}>
-            Atrás
-          </button>
-          <button
-            type="button"
-            className="bg-[#FF6F61] text-white px-4 py-2 rounded-lg hover:bg-[#FF4F3F] transition-colors duration-300"
-            onClick={handleCancel}>
-            Cancelar
+            onClick={handleBack}
+          >
+            Atras
           </button>
           <button
             type="submit"
-            className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#0056b3] transition-colors duration-300">
-            Siguiente
+            className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#0056b3] transition-colors duration-300"
+          >
+            Confirmar
           </button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default PersonalData;
