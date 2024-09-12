@@ -56,9 +56,11 @@ const Detalle = () => {
           <p className="text-sm text-gray-600">
             <span className="font-semibold">Total:</span> ${total}
           </p>
-          <p className="text-sm text-gray-600">
+          {tarjeta ? <p className="text-sm text-gray-600">
             <span className="font-semibold">Tarjeta terminada en:</span> {tarjeta.slice(-4)}
-          </p>
+          </p> : <p className="text-sm text-gray-600">
+            <span className="font-semibold">Efectivo</span>
+          </p>}
         </div>
 
         {/* Botones de Confirmar y Cancelar */}

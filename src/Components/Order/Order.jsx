@@ -33,7 +33,7 @@ const Order = () => {
   return (
     <div className='p-4 max-w-md mx-auto'>
       <h2 className='text-2xl font-bold text-gray-800 text-center'>Pedido #{nroPedido}</h2>
-      <PaymentMethods setPaymentMethod={setPaymentMethod} isDisabled={isDisabled} setIsDisabled={setIsDisabled} handleCancel={handleCancel} />
+      <PaymentMethods setPaymentMethod={setPaymentMethod} isDisabled={isDisabled} setIsDisabled={setIsDisabled} handleCancel={handleCancel} dataPedido={dataPedido} />
 
       {(paymentMethod === 'Debito/Credito' && isDisabled) && <PersonalData data={personalData} setData={setPersonalData} setIsDisabled={setIsDisabled} handleCancel={handleCancel} dataPedido={dataPedido} />}
     </div>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCancel }) => {
+const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCancel, dataPedido }) => {
   const [tempPaymentMethod, setTempPaymentMethod] = useState('')
+  const navigate = useNavigate();
 
   const handleChange = (e) => setTempPaymentMethod(e.target.value);
 
@@ -9,6 +11,10 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
     if (tempPaymentMethod) {
       setPaymentMethod(tempPaymentMethod);
       setIsDisabled(true);
+    }
+
+    if (tempPaymentMethod == 'Efectivo') {
+      navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio } });
     }
   }
 
