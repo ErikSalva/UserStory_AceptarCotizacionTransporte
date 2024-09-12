@@ -1,7 +1,7 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Detalle from './Components/Detalle/Detalle'
+import Home from './Components/Home/Home'
 import Order from './Components/Order/Order'
-import Detalle from './Components/Detalle/Detalle';
 
 function App() {
 
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route exact path='/cotizacion' element={<Order />} />
         <Route exact path='/detalle' element={<Detalle />} />
+        <Route exact path='/detalle' element={<Home />} />
       </Routes>
     </BrowserRouter>
   )
