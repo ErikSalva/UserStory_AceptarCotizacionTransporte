@@ -18,7 +18,7 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
     }
 
     if (tempPaymentMethod == 'Efectivo') {
-      navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio } });
+      navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio, formaPago: 'Efectivo' } });
     }
   };
 
