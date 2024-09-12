@@ -1,7 +1,11 @@
 import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas }) => {
-
+    const navigate = useNavigate();
+    const handleOnClink = () => {
+        navigate("/cotizacion", { state: { nroPedido, nombre: nombreChofer, fechaRetiro: fechaRetiro, fechaEntrega: fechaEntrega, precio: precio } })
+    }
     // Generar las estrellas dinámicamente
     const renderStars = () => {
         const stars = [];
@@ -44,9 +48,9 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                 </div>
 
                 <div className="flex justify-center">
-                    <a href="#" className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-center text-white bg-[#03045E] rounded-lg hover:bg-[rgb(0,95,150)] focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    <button className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-center text-white bg-[#03045E] rounded-lg hover:bg-[rgb(0,95,150)] focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={handleOnClink}>
                         CONTRATAR
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

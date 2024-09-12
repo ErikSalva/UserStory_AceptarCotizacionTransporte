@@ -5,8 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Detalle = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { pedido, nombre, total, tarjeta } = location.state || {}
-
+  const { pedido, nombre, fechaRetiro, fechaEntrega, total, tarjeta } = location.state || {}
   const handleCancel = () => {
     navigate('/');
   };
@@ -32,10 +31,10 @@ const Detalle = () => {
         {/* Fechas de retiro y entrega */}
         <div>
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Retiro:</span> 17/09/2024 - 16:00 hs
+            <span className="font-semibold">Retiro:</span> {fechaRetiro} - 16:00 hs
           </p>
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Entrega:</span> 17/09/2024 - 16:30 hs
+            <span className="font-semibold">Entrega:</span> {fechaEntrega} - 16:30 hs
           </p>
         </div>
 
@@ -65,17 +64,18 @@ const Detalle = () => {
         {/* Botones de Confirmar y Cancelar */}
         <div className="flex justify-around mt-4">
           <button
-            onClick={handleConfirm}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-          >
-            Confirmar
-          </button>
-          <button
             onClick={handleCancel}
             className="bg-red-500 text-white px-4 py-2 rounded-lg"
           >
             Cancelar
           </button>
+          <button
+            onClick={handleConfirm}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Confirmar
+          </button>
+
         </div>
       </div>
     </div>

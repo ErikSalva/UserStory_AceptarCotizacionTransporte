@@ -14,7 +14,7 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md">
-      <h2 className="text-lg font-semibold mb-4">Pedido #9384 - Métodos de Pago</h2>
+      <h2 className="text-lg font-semibold mb-4">Métodos de Pago</h2>
       <form className="space-y-4">
         <div className="flex items-center">
           <input

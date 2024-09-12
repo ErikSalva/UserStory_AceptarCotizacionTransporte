@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PersonalData = ({ data, setData, setIsDisabled, handleCancel }) => {
+const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }) => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     setData({
@@ -15,7 +15,7 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel }) => {
   }
 
   const handleConfirm = () => {
-    navigate("/detalle", { state: { pedido: 123, nombre: data.titular, total: 545, tarjeta: data.nroTarjeta } });
+    navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio, tarjeta: data.nroTarjeta } });
   }
 
   return (
