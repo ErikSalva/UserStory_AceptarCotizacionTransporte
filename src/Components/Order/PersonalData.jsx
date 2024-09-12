@@ -61,7 +61,7 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio, tarjeta: data.nroTarjeta } });
+      navigate("/detalle", { state: { pedido: dataPedido.nroPedido, nombre: dataPedido.nombre, fechaRetiro: dataPedido.fechaRetiro, fechaEntrega: dataPedido.fechaEntrega, total: dataPedido.precio, formaPago: 'Debito/Credito', tarjeta: data.nroTarjeta } });
     }
   }
 

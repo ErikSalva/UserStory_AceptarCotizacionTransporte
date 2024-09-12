@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Detalle.css'; // Importa el archivo de estilos
+import { sendEmail } from '../../../utils/sendMail';
 
 const Detalle = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { pedido, nombre, fechaRetiro, fechaEntrega, total, tarjeta } = location.state || {};
+  const { pedido, nombre, fechaRetiro, fechaEntrega, total, tarjeta, formaPago } = location.state || {};
 
   const handleCancel = () => {
     navigate('/');
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     setLoading(true);
-    setTimeout(() => {
-      navigate('/confirmacion', {
-        state: {
-          nroPedido: pedido,
-          nombreChofer: nombre,
-          fechaRetiro,
-          fechaEntrega,
-          precio: total,
-          tarjeta,
-        }
-      });
-    }, 750); // Delay de 0,75 segundo para simular el proceso de carga
+    console.log({ pedido, fechaEntrega, fechaRetiro, total, nombre, formaPago })
+    const emailResult = await sendEmail({ pedido, fechaEntrega, fechaRetiro, total, nombre, formaPago });
+
+    if (!emailResult.success) {
+      setLoading(false);
+      return;
+    }
+    navigate('/confirmacion', {
+      state: {
+        nroPedido: pedido,
+        nombreChofer: nombre,
+        fechaRetiro,
+        fechaEntrega,
+        precio: total,
+        tarjeta,
+      }
+    });
   };
 
   return (
