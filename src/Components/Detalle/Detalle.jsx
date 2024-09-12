@@ -1,9 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Detalle = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { pedido, nombre, total, tarjeta } = location.state || {}
 
   const handleCancel = () => {
     navigate('/');
@@ -14,7 +16,7 @@ const Detalle = () => {
   };
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-lg font-semibold mb-4">Pedido #9384 - Detalle</h2>
+      <h2 className="text-lg font-semibold mb-4">Pedido {pedido} - Detalle</h2>
       <div className="space-y-4">
         {/* Detalle de envío */}
         <div>
@@ -40,7 +42,7 @@ const Detalle = () => {
         {/* Chofer */}
         <div>
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Chofer:</span> JUAN PEREZ
+            <span className="font-semibold">Chofer:</span> {nombre}
           </p>
         </div>
 
@@ -53,10 +55,10 @@ const Detalle = () => {
             <span className="font-semibold">Detalle del pago:</span> #2937748E
           </p>
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Total:</span> $504.50
+            <span className="font-semibold">Total:</span> ${total}
           </p>
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">Tarjeta terminada en:</span> XXXX
+            <span className="font-semibold">Tarjeta terminada en:</span> {tarjeta.slice(-4)}
           </p>
         </div>
 

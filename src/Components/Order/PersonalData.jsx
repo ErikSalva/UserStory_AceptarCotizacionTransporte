@@ -15,7 +15,7 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel }) => {
   }
 
   const handleConfirm = () => {
-    navigate("/detalle");
+    navigate("/detalle", { state: { pedido: 123, nombre: data.titular, total: 545, tarjeta: data.nroTarjeta } });
   }
 
   return (
