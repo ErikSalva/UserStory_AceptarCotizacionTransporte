@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCancel, dataPedido }) => {
-  const [tempPaymentMethod, setTempPaymentMethod] = useState('')
+  const [tempPaymentMethod, setTempPaymentMethod] = useState('');
+  const [paymentMethodError, setPaymentMethodError] = useState('');
+
   const navigate = useNavigate();
 
   const handleChange = (e) => setTempPaymentMethod(e.target.value);
@@ -11,6 +13,9 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
     if (tempPaymentMethod) {
       setPaymentMethod(tempPaymentMethod);
       setIsDisabled(true);
+      setPaymentMethodError('');
+    } else {
+      setPaymentMethodError('Se debe seleccionar una forma de pago.')
     }
 
     if (tempPaymentMethod == 'Efectivo') {
@@ -46,8 +51,11 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
           />
           <label htmlFor="efectivo" className="text-gray-700">Efectivo</label>
         </div>
+        {paymentMethodError && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg">
+          {paymentMethodError}
+        </p>}
         {!isDisabled && (
-          <div className="flex space-x-2 mt-4 justify-center">
+          <div className="flex space-x-2 mt-4 pt-5 justify-center">
             <button
               type="button"
               className="bg-red-500 text-white px-4 py-2 rounded-lg"
