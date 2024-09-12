@@ -28,25 +28,50 @@ const Home = () => {
             precio: 400,
             estrellas: 3
         },
-        // Agrega más transportistas si es necesario
+        {
+            nroPedido: '4',
+            nombreChofer: 'Angel Di Maria',
+            fechaRetiro: '10/10/2024',
+            fechaEntrega: '15/10/2024',
+            precio: 600,
+            estrellas: 4
+        },
+        {
+            nroPedido: '5',
+            nombreChofer: 'Paulo Dybala',
+            fechaRetiro: '20/10/2024',
+            fechaEntrega: '25/10/2024',
+            precio: 550,
+            estrellas: 4
+        },
+        {
+            nroPedido: '6',
+            nombreChofer: 'Sergio Aguero',
+            fechaRetiro: '30/09/2024',
+            fechaEntrega: '05/10/2024',
+            precio: 800,
+            estrellas: 5
+        },
+        {
+            nroPedido: '7',
+            nombreChofer: 'Rodrigo De Paul',
+            fechaRetiro: '08/10/2024',
+            fechaEntrega: '12/10/2024',
+            precio: 650,
+            estrellas: 4
+        },
+        {
+            nroPedido: '8',
+            nombreChofer: 'Emiliano Martinez',
+            fechaRetiro: '18/09/2024',
+            fechaEntrega: '23/09/2024',
+            precio: 700,
+            estrellas: 5
+        },
     ];
-
+    
     return (
-        <div className="min-h-screen bg-[#caf0f8]"> {/* Fondo de la página */}
-            {/* Barra superior */}
-            <div className="bg-[#03045E] p-4 flex justify-between items-center">
-                <span className="text-white text-xl font-bold">Mi Aplicación</span>
-
-                {/* Contenedor del logo con borde circular */}
-                <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full">
-                    <img 
-                        src="/img/camion.png" 
-                        alt="Camión" 
-                        className="w-8 h-8 rounded-full" 
-                    />
-                </div>
-            </div>
-
+        <div className="min-h-screen"> {/* Fondo de la página */}
             {/* Sección de cotizaciones */}
             <div className="p-5 lg:px-20"> {/* Aumentar padding en pantallas grandes */}
                 <h2 className="text-2xl font-bold text-center mb-4 text-black">

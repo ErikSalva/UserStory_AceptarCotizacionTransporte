@@ -1,14 +1,16 @@
-import './App.css'
-import Confirmation from './Components/Detalle/Confirmation'
-import Detalle from './Components/Detalle/Detalle'
-import Home from './Components/Home'
-import Order from './Components/Order/Order'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css';
+import Confirmation from './Components/Detalle/Confirmation';
+import Detalle from './Components/Detalle/Detalle';
+import Home from './Components/Home';
+import Order from './Components/Order/Order';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Components/Header'; 
 
 function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route exact path='/cotizacion' element={<Order />} />
         <Route exact path='/detalle' element={<Detalle />} />
@@ -16,8 +18,7 @@ function App() {
         <Route exact path='/confirmacion' element={<Confirmation />} />
       </Routes>
     </BrowserRouter>
-
-  )
+  );
 }
 
-export default App
+export default App;

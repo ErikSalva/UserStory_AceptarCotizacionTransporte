@@ -1,11 +1,18 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Card.css'; // Importa el archivo de estilos
 
 const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas }) => {
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const handleOnClink = () => {
-        navigate("/cotizacion", { state: { nroPedido, nombre: nombreChofer, fechaRetiro: fechaRetiro, fechaEntrega: fechaEntrega, precio: precio } })
-    }
+
+    const handleOnClick = () => {
+        setLoading(true);
+        setTimeout(() => {
+            navigate("/cotizacion", { state: { nroPedido, nombre: nombreChofer, fechaRetiro, fechaEntrega, precio } });
+        }, 1000); // Delay de 1 segundo para simular el proceso de carga
+    };
+
     // Generar las estrellas dinámicamente
     const renderStars = () => {
         const stars = [];
@@ -20,26 +27,39 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
     };
 
     return (
-        <div className="max-w-sm bg-[rgb(0,119,182)] border border-gray-200 rounded-xl shadow p-5">
+        <div className="relative max-w-sm bg-[#0077B6] border border-gray-200 rounded-xl shadow p-5">
             <a href="#">
-                <img className="rounded-t-xl" src="/img/hombre-conduciendo.jpg" alt="" />
+                <img className="rounded-t-xl" src="/img/hombre-conduciendo.jpg" alt="Conductor" />
             </a>
             <div className="p-5 text-white">
-                {/* Sección de calificación */}
-                <div className="flex items-center mb-2">
-                    {renderStars()}
+
+                {/* Estrellas */}
+                <div className="flex justify-between items-center mb-4">
+                    <div className="flex">{renderStars()}</div>
                 </div>
+                {/* Nombre del conductor */}
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-bold">{nombreChofer}</h5>
                 </a>
-                <p className="mb-3 font-normal">
-                    Fecha de retiro: {fechaRetiro}<br />
-                    Fecha de entrega: {fechaEntrega}
-                </p>
 
-                <div className="flex flex-col items-center mb-4">
-                    <div className="text-xl font-bold bg-[#03045E] rounded-lg px-4 py-2 mb-2 text-white">
-                        ${precio}
+                {/* Separador */}
+                <hr className="border-gray-300 my-2" />
+
+                {/* Fechas */}
+                <div className="flex justify-between items-center mb-2">
+                    <p className="font-normal">
+                        Fecha de retiro: {fechaRetiro}<br />
+                        Fecha de entrega: {fechaEntrega}
+                    </p>
+                </div>
+
+                {/* Separador */}
+                <hr className="border-gray-300 my-2" />
+
+                {/* Precio y métodos de pago */}
+                <div className="flex justify-between items-center mb-2">
+                    <div className="text-xl font-bold text-white">
+                        Precio: <span className="text-3xl">${precio}</span>
                     </div>
                     <div className="flex space-x-4">
                         <img src="/img/dinero.png" alt="Efectivo" className="w-8 h-8" />
@@ -47,12 +67,21 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                     </div>
                 </div>
 
+                {/* Botón Contratar */}
                 <div className="flex justify-center">
-                    <button className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-center text-white bg-[#03045E] rounded-lg hover:bg-[rgb(0,95,150)] focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={handleOnClink}>
+                    <button
+                        className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-[#03045E] rounded-lg hover:bg-[#003d7a] focus:ring-4 focus:outline-none focus:ring-blue-300 transition-colors duration-300"
+                        onClick={handleOnClick}
+                    >
                         CONTRATAR
                     </button>
                 </div>
             </div>
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
         </div>
     );
 }

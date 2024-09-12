@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }) => {
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setData({
       ...data,
@@ -19,8 +20,8 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
   }
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-md mt-2">
-      <h2 className="text-lg font-semibold mb-4">Datos Personales</h2>
+    <div className="bg-[#0077B6] p-6 rounded-xl shadow-md mt-2">
+      <h2 className="text-lg font-semibold mb-4 text-white">Datos Personales</h2>
       <form className="space-y-4">
         <input
           name="titular"
@@ -71,19 +72,19 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
         <div className="flex space-x-2 mt-4 justify-center">
           <button
             type="button"
-            className="bg-green-500 text-white px-4 py-2 rounded-lg"
+            className="bg-[#4CAF50] text-white px-4 py-2 rounded-lg hover:bg-[#45a049] transition-colors duration-300"
             onClick={handleBack}>
             Atrás
           </button>
           <button
             type="button"
-            className="bg-red-500 text-white px-4 py-2 rounded-lg"
+            className="bg-[#FF6F61] text-white px-4 py-2 rounded-lg hover:bg-[#FF4F3F] transition-colors duration-300"
             onClick={handleCancel}>
             Cancelar
           </button>
           <button
             type="button"
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#0056b3] transition-colors duration-300"
             onClick={handleConfirm}>
             Siguiente
           </button>

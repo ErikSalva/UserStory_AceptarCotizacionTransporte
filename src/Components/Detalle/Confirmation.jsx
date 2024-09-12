@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './Confirmation.css'; // Asegúrate de importar el archivo CSS
+import './Confirmation.css';
+
 
 const Confirmation = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas } = location.state || {};
+    const { nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio } = location.state || {};
 
     useEffect(() => {
         const audio = new Audio('/sounds/bell-ding.wav');
@@ -14,17 +15,17 @@ const Confirmation = () => {
     }, []);
 
     const handleNavigate = () => {
-        navigate('/'); 
+        navigate('/');
     };
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-100">
-            <div className="bg-white rounded-lg shadow-md p-6 max-w-xs">
+        <div className="flex justify-center mt-8">
+            <div className="bg-[#0077B6] border border-gray-200 rounded-xl shadow p-6 max-w-xs text-white">
                 <div className="flex flex-col items-center mb-4">
                     <div className="bg-green-600 w-16 h-16 rounded-full flex justify-center items-center mb-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-8 w-8 text-white checkmark" // Añadir clase para la animación
+                            className="h-8 w-8 text-white checkmark"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -37,15 +38,15 @@ const Confirmation = () => {
                             />
                         </svg>
                     </div>
-                    <h2 className="text-lg font-semibold text-gray-800">CONFIRMADO</h2>
+                    <h2 className="text-lg font-semibold">CONFIRMADO</h2>
                 </div>
-                <div className="text-sm text-gray-700 mb-4">
+                <div className="text-sm mb-4">
                     <p><strong>Ubicación entrega:</strong> calle falsa 5678, CP:5000, Córdoba, Argentina</p>
                     <p><strong>Entrega:</strong> {fechaEntrega} - 16:30 hs</p>
                     <p><strong>Chofer:</strong> {nombreChofer}</p>
                     <p><strong>Estado:</strong> CONFIRMADO</p>
                 </div>
-                <div className="text-sm text-gray-700 mb-4">
+                <div className="text-sm mb-4">
                     <p><strong>Detalle del pago</strong></p>
                     <p>Total: <strong>${precio}</strong></p>
                     <p>
@@ -61,7 +62,7 @@ const Confirmation = () => {
                 </div>
                 <button
                     onClick={handleNavigate}
-                    className="w-full py-2 bg-blue-700 text-white rounded-md mt-4 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    className="w-full py-2 bg-[#03045E] text-white rounded-lg mt-4 hover:bg-[#003d7a] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 >
                     INICIO
                 </button>
