@@ -12,7 +12,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
     const handleOnClick = () => {
 
         if (confirmation) {
-            localStorage.setItem('confirmacion', JSON.stringify(confirmation));
+            // localStorage.setItem('confirmacion', JSON.stringify(confirmation)); 
             setFlagConfirmation(true);
             return;
         }
