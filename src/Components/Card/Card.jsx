@@ -7,12 +7,12 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { confirmation } = useConfirmation();
-    const [ flagConfirmation, setFlagConfirmation] = useState(false);
+    const [flagConfirmation, setFlagConfirmation] = useState(false);
 
     const handleOnClick = () => {
 
         if (confirmation) {
-            // alert('Ya se acepto una cotización.');
+            localStorage.setItem('confirmacion', JSON.stringify(confirmation));
             setFlagConfirmation(true);
             return;
         }
