@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Card.css'; // Importa el archivo de estilos
 import { useConfirmation } from '../../context/contextConfirmation';
 
-const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas }) => {
+const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas, imagen}) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { confirmation } = useConfirmation();
@@ -39,22 +39,22 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
     return (
         <div className="relative max-w-sm bg-[#0077B6] border border-gray-200 rounded-xl shadow p-5">
             <a href="#">
-                <img className="rounded-t-xl" src="/img/hombre-conduciendo.jpg" alt="Conductor" />
+                <img className="rounded-t-xl w-full h-48 object-cover" src={imagen} alt="Conductor" />
             </a>
             <div className="p-5 text-white">
-
                 {/* Estrellas */}
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex">{renderStars()}</div>
                 </div>
+        
                 {/* Nombre del conductor */}
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-bold">{nombreChofer}</h5>
                 </a>
-
+        
                 {/* Separador */}
                 <hr className="border-gray-300 my-2" />
-
+        
                 {/* Fechas */}
                 <div className="flex justify-between items-center mb-2">
                     <p className="font-normal">
@@ -62,10 +62,10 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         Fecha de entrega: {fechaEntrega}
                     </p>
                 </div>
-
+        
                 {/* Separador */}
                 <hr className="border-gray-300 my-2" />
-
+        
                 {/* Precio y métodos de pago */}
                 <div className="flex justify-between items-center mb-2">
                     <div className="text-xl font-bold text-white">
@@ -76,7 +76,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         <img src="/img/tarjeta-de-credito.png" alt="Crédito" className="w-8 h-8" />
                     </div>
                 </div>
-
+        
                 {/* Botón Contratar */}
                 <div className="flex justify-center">
                     <button

@@ -63,7 +63,7 @@ const PaymentMethods = ({ setPaymentMethod, isDisabled, setIsDisabled, handleCan
             </button>
             <button
               type="button"
-              className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#0056b3] transition-colors duration-300"
+              className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#003d7a] transition-colors duration-300"
               onClick={onClickConfirm}>
               Siguiente
             </button>
