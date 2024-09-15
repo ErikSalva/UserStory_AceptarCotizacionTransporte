@@ -80,7 +80,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                 {/* Botón Contratar */}
                 <div className="flex justify-center">
                     <button
-                        className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-[#03045E] rounded-lg hover:bg-[#003d7a] focus:ring-4 focus:outline-none focus:ring-blue-300 transition-colors duration-300"
+                        className="w-[80%] inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-[#00025f] rounded-lg hover:bg-[#040799c5] hover:outline hover:outline-2 hover:outline-white focus:ring-4 focus:outline-none focus:ring-blue-300 transition-colors duration-300"
                         onClick={handleOnClick}
                     >
                         CONTRATAR
