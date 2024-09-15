@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Card.css'; // Importa el archivo de estilos
 import { useConfirmation } from '../../context/contextConfirmation';
 
-const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas, imagen}) => {
+const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estrellas, imagen }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { confirmation } = useConfirmation();
@@ -12,7 +12,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
     const handleOnClick = () => {
 
         if (confirmation) {
-            // localStorage.setItem('confirmacion', JSON.stringify(confirmation)); 
+            // localStorage.setItem('confirmacion', JSON.stringify(confirmation));
             setFlagConfirmation(true);
             return;
         }
@@ -46,15 +46,15 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex">{renderStars()}</div>
                 </div>
-        
+
                 {/* Nombre del conductor */}
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-bold">{nombreChofer}</h5>
                 </a>
-        
+
                 {/* Separador */}
                 <hr className="border-gray-300 my-2" />
-        
+
                 {/* Fechas */}
                 <div className="flex justify-between items-center mb-2">
                     <p className="font-normal">
@@ -62,10 +62,10 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         Fecha de entrega: {fechaEntrega}
                     </p>
                 </div>
-        
+
                 {/* Separador */}
                 <hr className="border-gray-300 my-2" />
-        
+
                 {/* Precio y métodos de pago */}
                 <div className="flex justify-between items-center mb-2">
                     <div className="text-xl font-bold text-white">
@@ -76,7 +76,7 @@ const Card = ({ nroPedido, nombreChofer, fechaRetiro, fechaEntrega, precio, estr
                         <img src="/img/tarjeta-de-credito.png" alt="Crédito" className="w-8 h-8" />
                     </div>
                 </div>
-        
+
                 {/* Botón Contratar */}
                 <div className="flex justify-center">
                     <button

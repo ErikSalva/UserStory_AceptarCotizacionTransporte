@@ -253,15 +253,21 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
         <div className="flex space-x-2 mt-4 justify-center">
           <button
             type="button"
-            className="bg-[#90E0EF] text-white px-4 py-2 rounded-lg hover:bg-[#5b9ce6] transition-colors duration-300"
+            className="bg-[#90E0EF] text-white px-4 py-2 rounded-lg hover:bg-[#CAF0F8] hover:outline hover:outline-2 hover:outline-black transition-colors duration-300"
             onClick={handleBack}
           >
-            <p className="text-black font-bold">Atras</p>
-            
+            <p className="text-black font-bold">Atrás</p>
+
+          </button>
+          <button
+            type="button"
+            className="bg-[#ff2828] text-white px-4 py-2 rounded-lg hover:bg-[#f84f4f] hover:outline hover:outline-2 hover:outline-white transition-colors duration-300 font-bold"
+            onClick={handleCancel}>
+            Cancelar
           </button>
           <button
             type="submit"
-            className="bg-[#03045E] text-white px-4 py-2 rounded-lg hover:bg-[#003d7a] transition-colors duration-300"
+            className="bg-[#00025f] text-white px-4 py-2 rounded-lg hover:bg-[#040799c5] hover:outline hover:outline-2 hover:outline-white transition-colors duration-300"
           >
             <p className='font-bold'>Confirmar</p>
           </button>
