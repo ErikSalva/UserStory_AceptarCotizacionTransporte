@@ -67,6 +67,17 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
     });
   };
 
+  const handleDocNumberChange = (e) => {
+    let formattedValue = e.target.value;
+    if (data.tipoDoc === 'DNI') {
+      formattedValue = e.target.value.replace(/\D/g, '');
+    }
+    setData({
+      ...data,
+      [e.target.name]: formattedValue
+    });
+  }
+
   const handleBack = () => {
     setIsDisabled(false);
   }
@@ -106,11 +117,21 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
       errors.tipoDoc = 'El tipo de documento es requerido.';
     }
 
-    // Validar número de documento (solo números y requerido)
+    // Validar número de documento
     if (!data.nroDoc) {
       errors.nroDoc = 'El número de documento es requerido.';
-    } else if (!/^\d+$/.test(data.nroDoc)) {
-      errors.nroDoc = 'El número de documento solo debe contener números.';
+    } else {
+      // Para DNI 7 dígitos al menos y solo números
+      if (data.tipoDoc === 'DNI') {
+        if (data.nroDoc.length < 7 || !/^\d+$/.test(data.nroDoc)) {
+          errors.nroDoc = 'El número de DNI debe tener al menos 7 dígitos y solo contener números.';
+        }
+        // Para pasaporte 5 dígitos al menos
+      } else if (data.tipoDoc === 'Pasaporte') {
+        if (data.nroDoc.length < 5) {
+          errors.nroDoc = 'El pasaporte debe tener al menos 5 caracteres.';
+        }
+      }
     }
 
     // Validar número de tarjeta (solo números y longitud de 16 dígitos)
@@ -179,7 +200,6 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             <option value="" disabled>Selecciona el tipo de documento</option>
             <option value="DNI">DNI</option>
             <option value="Pasaporte">Pasaporte</option>
-            <option value="Cédula">Cédula de identidad</option>
           </select>
           {errors.tipoDoc && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
             {errors.tipoDoc}
@@ -190,9 +210,9 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
           <input
             name="nroDoc"
             value={data.nroDoc}
-            onChange={handleChange}
+            onChange={handleDocNumberChange}
             placeholder="Nro de documento"
-            type='number'
+            type='text'
             className="w-full p-2 border border-gray-300 rounded-lg"
           />
           {errors.nroDoc && <p className="text-red-500 text-sm bg-red-100 p-2 rounded-lg mt-2">
@@ -220,8 +240,6 @@ const PersonalData = ({ data, setData, setIsDisabled, handleCancel, dataPedido }
             {errors.nroTarjeta}
           </p>}
         </div>
-
-
 
         <div>
           <input
